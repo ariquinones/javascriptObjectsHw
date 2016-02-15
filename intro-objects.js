@@ -209,13 +209,21 @@ var plays = [
 
 var where = function(plays, propertyObject) {
     var list = [] 
-    for (var i=0; i<plays.length; i++) {
-        var indObjects = plays[i] 
-        for (var prop in indObjects) {
-        if (prop[indObjects][prop] === propertyObject) {
-                list.push(indObjects)
+    for (var i=0; i < plays.length; i++) {
+        var indObject = plays[i] 
+
+        var propValsAreEqual = true;
+
+        for (var prop in propertyObject) {
+            if (propertyObject[prop] !== indObject[prop]){
+                propValsAreEqual = false
             }
-    }
+        }
+
+        if (propValsAreEqual===true){
+            list.push(indObject)
+        }
+
     return list 
 }
 
